@@ -1,4 +1,4 @@
-The application is hoisted at: https://profile-management.netlify.app/
+The application is hosted at: https://profile-management.netlify.app/
 
 How to run the assignment:
 1. Install all the dependencies using 'npm install'
