@@ -1,7 +1,7 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function Home({ patientList }) {
+export default function PatientTable({ patientList }) {
     const history = useHistory();
 
     const onRowClick = (event, id) => {
@@ -12,7 +12,7 @@ export default function Home({ patientList }) {
         );
     }
     return (
-        <React.Fragment>
+        <Fragment>
             {patientList && <table className="table container">
                 <thead className="thead-dark">
                     <tr>
@@ -35,6 +35,6 @@ export default function Home({ patientList }) {
                     })}
                 </tbody>
             </table>}
-        </React.Fragment>
+        </Fragment>
     );
 }

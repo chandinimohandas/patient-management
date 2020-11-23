@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './Home';
+import PatientTable from './PatientTable';
 import PatientDetails from './PatientDetails';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
@@ -55,8 +55,17 @@ export default function Navigation() {
     return (<Fragment>
         <Router>
             <Switch>
-                {patientList && <Route path='/' exact component={() => <Fragment><input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onChange={e => onFileUpload(e.target.files[0])} /><Home patientList={patientList} /></Fragment>}></Route>}
-                {patientList && <Route path='/patients/:id' exact component={() => <PatientDetails patientList={patientList} />}></Route>}
+                {patientList &&
+                    <Route path='/' exact component={() =>
+                        <Fragment>
+                            <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" onChange={e => onFileUpload(e.target.files[0])} style={{ margin: '0 40%', padding: '1.5rem' }} />
+                            <PatientTable patientList={patientList} />
+                        </Fragment>}>
+                    </Route>}
+                {patientList &&
+                    <Route path='/patients/:id' exact component={() =>
+                        <PatientDetails patientList={patientList} />}>
+                    </Route>}
             </Switch>
         </Router>
     </Fragment>);
